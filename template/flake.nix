@@ -9,7 +9,10 @@
   outputs = { self, nixpkgs, home-manager }: {
     homeConfigurations."jux" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs { system = "x86_64-linux"; };
-      modules = [ ./home.nix ];
+      modules = [
+        ./home.nix
+        ./hardware.nix
+      ];
     };
   };
 }

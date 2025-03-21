@@ -10,6 +10,8 @@
     fzf
     neovim
     tmux
+    docker
+    ncspot
   ];
 
   # Manage dotfiles by linking them from ~/.config/dotfiles
