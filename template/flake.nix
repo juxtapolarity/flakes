@@ -11,7 +11,7 @@
       pkgs = import nixpkgs { system = "x86_64-linux"; };
       modules = [
         ./home.nix
-        ./hardware.nix
+        # ./hardware.nix
       ];
     };
   };
