@@ -1,42 +1,35 @@
-{ config, pkgs, dotfiles, ... }:
+{ config, pkgs, ... }:
 
-{
+let
+  dotfilesPath = "/home/jux/.config/dotfiles";
+in {
   home.username = "jux";
   home.homeDirectory = "/home/jux";
-  home.stateVersion = "24.11"; # Required for compatibility
+  home.stateVersion = "24.11";
 
-  # This environment variable points ALSA to the Debian system plugin directory.
-  home.sessionVariables = {
-    ALSA_PLUGIN_DIR = "/usr/lib/x86_64-linux-gnu/alsa-lib";
-  };
-
-  # Install packages via Nix
   home.packages = with pkgs; [
     fzf
     neovim
     tmux
     docker
     ncspot
-    # mpv
-    # nixGLNvidia
+    zsh
+    i3
+    oh-my-posh
+    mpv
   ];
 
-  # Manage dotfiles by linking them from ~/.config/dotfiles
   home.file = {
-    ".config/home-manager".source = "${dotfiles}/home-manager";
-    ".zshrc".source = "${dotfiles}/zsh/.zshrc";
-    ".config/nvim".source = "${dotfiles}/nvim";
-    ".config/mpv".source = "${dotfiles}/mpv";
-    ".config/polybar".source = "${dotfiles}/polybar";
-    ".tmux".source = "${dotfiles}/tmux";
-    ".tmux.conf".source = "${dotfiles}/tmux/.tmux.conf";
-    ".config/i3".source = "${dotfiles}/i3";
-    ".config/.poshthemes".source = "${dotfiles}/oh-my-posh";
+    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/zsh/.zshrc";
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/nvim";
+    ".config/mpv".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/mpv";
+    ".config/polybar".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/polybar";
+    ".tmux".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/tmux";
+    ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/tmux/.tmux.conf";
+    ".config/i3".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/i3";
+    ".config/.poshthemes".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/oh-my-posh";
   };
 
-  # Define session variables
-  home.sessionVariables = { };
-
-  # Enable Home Manager itself
   programs.home-manager.enable = true;
 }
+
