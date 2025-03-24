@@ -8,15 +8,24 @@ in {
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    fzf
-    neovim
-    tmux
     docker
-    ncspot
-    zsh
+    feh
+    flameshot
+    fzf
+    git
     i3
-    oh-my-posh
+    polybar
     mpv
+    neovim
+    obsidian
+    oh-my-posh
+    ncspot
+    nsxiv
+    rofi
+    tmux
+    vim
+    wezterm
+    zsh
   ];
 
   home.file = {

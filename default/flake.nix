@@ -11,7 +11,7 @@
     let
       system = "x86_64-linux";
       username = "jux";
-      hostname = "your-hostname"; # ← replace this with your real hostname (run `hostname`)
+      hostname = "juxnixos"; # ← replace this with your real hostname (run `hostname`)
       pkgs = import nixpkgs { inherit system; };
     in {
       # NixOS system config
@@ -30,6 +30,7 @@
             users.users.${username} = {
               isNormalUser = true;
               extraGroups = [ "wheel" "networkmanager" ];
+              shell = pkgs.zsh;
             };
 
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
