@@ -5,18 +5,20 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, zen-browser, ... }:
     let
       system = "x86_64-linux";
       username = "jux";
-      hostname = "juxnixos"; # ← replace this with your real hostname (run `hostname`)
+      hostname = "juxnixos";
       pkgs = import nixpkgs { inherit system; };
     in {
-      # NixOS system config
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
+
         modules = [
           ./nixos/configuration.nix
           ./nixos/hardware-configuration.nix
@@ -34,8 +36,16 @@
             };
 
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+            environment.systemPackages = [
+              zen-browser.packages.${system}.default
+            ];
           }
         ];
+
+        specialArgs = {
+          inherit username zen-browser;
+        };
       };
 
       # Optional: use this on Debian or other non-NixOS systems

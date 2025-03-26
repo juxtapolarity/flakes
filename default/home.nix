@@ -26,6 +26,10 @@ in {
     vim
     wezterm
     zsh
+    zsh-autosuggestions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+    zoxide
   ];
 
   home.file = {
@@ -37,6 +41,8 @@ in {
     ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/tmux/.tmux.conf";
     ".config/i3".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/i3";
     ".config/.poshthemes".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/oh-my-posh";
+    ".config/rofi".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/rofi";
+    ".wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/wezterm/.wezterm.lua";
   };
 
   programs.home-manager.enable = true;
