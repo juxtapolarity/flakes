@@ -24,8 +24,10 @@ in {
     oh-my-posh
     ncspot
     nerd-fonts.fira-code
+    nodejs
     nsxiv
     picom
+    protonup
     rofi
     tmux
     unzip
