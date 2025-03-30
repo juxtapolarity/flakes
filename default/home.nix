@@ -9,6 +9,7 @@ in {
 
   home.packages = with pkgs; [
     appimage-run
+    btop
     cmake
     docker
     feh
