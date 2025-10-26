@@ -8,24 +8,16 @@ in {
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    wineWowPackages.stable    # 32 + 64-bit Wine build      :contentReference[oaicite:0]{index=0}
-    # wineWowPackages.staging
-    winetricks                # pulls .NET 4.8 + VC runtimes :contentReference[oaicite:1]{index=1}
-    cabextract                # helper that Winetricks uses
-    corefonts                 # Microsoft UI fonts Kontakt expects :contentReference[oaicite:2]{index=2}
-    alsa-utils
     appimage-run
     ardour
     aria2
     btop
-    carla
     cmake
     docker
     dualsensectl
     feh
     ffmpeg
     firefox
-    firejail
     flameshot
     flatpak
     fzf
@@ -39,10 +31,7 @@ in {
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
     i3
-    jack2
-    jellyfin
     polybar
-    losslesscut-bin
     micromamba
     motrix
     mpv
@@ -57,14 +46,7 @@ in {
     picom
     protonup
     python312Packages.aria2p
-    qjackctl
-    reaper
-    sfizz
-    decent-sampler
-    surge-XT
     rofi
-    samba
-    telegram-desktop
     tmux
     transmission_4
     unzip
@@ -72,8 +54,6 @@ in {
     vim
     wezterm
     xclip
-    yabridge
-    yabridgectl
     yt-dlp
     zsh
     zsh-autosuggestions

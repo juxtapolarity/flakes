@@ -5,12 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # zen-browser.url = "github:MarceColl/zen-browser-flake";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # outputs = { self, nixpkgs, home-manager, zen-browser, ... }:
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }:
     let
       system = "x86_64-linux";
       username = "jux";
@@ -38,24 +37,15 @@
 
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-            environment.systemPackages = [
-              # zen-browser.packages.${system}.default
-            ];
-
+            environment.systemPackages = [ ];
             programs.nix-ld.enable = true;
           }
         ];
 
         specialArgs = {
-          # inherit username zen-browser;
+          inherit hyprland;
         };
       };
-
-      # Optional: use this on Debian or other non-NixOS systems
-      # homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-      #   inherit pkgs;
-      #   modules = [ ./home.nix ];
-      # };
     };
 }
 
