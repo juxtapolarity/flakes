@@ -1,6 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }: {
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
 
   # Bootloader setup (already good!)
   boot.loader.systemd-boot.enable = true;
@@ -160,6 +161,7 @@
   # time.timeZone = "Europe/Copenhagen";
   # i18n.defaultLocale = "en_US.UTF-8";
 
-  system.stateVersion = "24.11";
+  # system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }
 

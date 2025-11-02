@@ -5,7 +5,8 @@ let
 in {
   home.username = "jux";
   home.homeDirectory = "/home/jux";
-  home.stateVersion = "24.11";
+  # home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   home.packages = with pkgs; [
     wineWowPackages.stable    # 32 + 64-bit Wine build      :contentReference[oaicite:0]{index=0}
@@ -41,9 +42,10 @@ in {
     i3
     jack2
     jellyfin
+    kitty
     polybar
     losslesscut-bin
-    micromamba
+    # micromamba
     motrix
     mpv
     ncspot
@@ -55,13 +57,14 @@ in {
     oh-my-posh
     persepolis
     picom
-    protonup
+    protonup-ng
     python312Packages.aria2p
     qjackctl
     reaper
     sfizz
     decent-sampler
-    surge-XT
+    # surge-XT
+    ripgrep
     rofi
     samba
     telegram-desktop
