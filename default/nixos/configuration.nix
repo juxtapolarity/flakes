@@ -47,7 +47,7 @@
     };
 
   # ---------------------------------------------------------------------------
-  # Wifi
+  # Wifi / bluetooth
   # ---------------------------------------------------------------------------
   hardware.enableRedistributableFirmware = true;
   networking.networkmanager.enable = true;
