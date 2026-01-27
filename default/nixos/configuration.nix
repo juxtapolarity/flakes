@@ -47,6 +47,15 @@
     };
 
   # ---------------------------------------------------------------------------
+  # Wifi
+  # ---------------------------------------------------------------------------
+  hardware.enableRedistributableFirmware = true;
+  networking.networkmanager.enable = true;
+  users.users.jux.extraGroups = [ "audio" "networkmanager" ];
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  # ---------------------------------------------------------------------------
   # Wine
   # ---------------------------------------------------------------------------
 
@@ -83,7 +92,7 @@
     }
   ];
 
-  users.users.jux.extraGroups = [ "audio" ];
+  # users.users.jux.extraGroups = [ "audio" ];
 
   ## PipeWire (simple, revision-agnostic)
   services.pipewire = {
@@ -126,6 +135,9 @@
     remotePlay.openFirewall = true; # optional
     dedicatedServer.openFirewall = true; # optional
   };
+
+  # Enable hardware support (for controllers)
+  hardware.steam-hardware.enable = true;
 
   # Optional: Vulkan support and 32-bit compatibility (good for gaming like Steam/Proton)
   hardware.graphics.enable = true;
