@@ -5,8 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   # outputs = { self, nixpkgs, home-manager, zen-browser, ... }:
@@ -51,11 +49,6 @@
         };
       };
 
-      # Optional: use this on Debian or other non-NixOS systems
-      # homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-      #   inherit pkgs;
-      #   modules = [ ./home.nix ];
-      # };
     };
 }
 
