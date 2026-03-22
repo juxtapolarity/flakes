@@ -18,6 +18,7 @@ in {
     appimage-run
     ardour
     aria2
+    bitwarden-cli
     btop
     carla
     cmake
@@ -39,10 +40,13 @@ in {
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
+    gthumb
     i3
+    imagemagick
     jack2
     jellyfin
     kitty
+    localsend
     polybar
     losslesscut-bin
     # micromamba
