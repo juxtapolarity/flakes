@@ -38,19 +38,23 @@
   # ---------------------------------------------------------------------------
   # Prevent system sleep / suspend
   # ---------------------------------------------------------------------------
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowSuspendThenHibernate=no
-    AllowHybridSleep=no
-  '';
+  systemd.sleep.settings = {
+    Sleep = {
+      AllowSuspend = false;
+      AllowHibernation = false;
+      AllowSuspendThenHibernate = false;
+      AllowHybridSleep = false;
+    };
+  };
 
-  # Prevent GNOME power management from suspending
-  services.logind = {
-    lidSwitch = "ignore";
-    powerKey = "ignore";
-    suspendKey = "ignore";
-    hibernateKey = "ignore";
+  # ---------------------------------------------------------------------------
+  # Prevent GNOME / logind power actions
+  # ---------------------------------------------------------------------------
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandlePowerKey = "ignore";
+    HandleSuspendKey = "ignore";
+    HandleHibernateKey = "ignore";
   };
 
   # ---------------------------------------------------------------------------
