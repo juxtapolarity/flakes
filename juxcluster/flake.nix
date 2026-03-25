@@ -1,5 +1,5 @@
 {
-  description = "NixOS + Home Manager flake for juxpc and juxserver";
+  description = "NixOS + Home Manager flake for juxcluster";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -11,7 +11,6 @@
   outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      username = "jux";
       pkgs = import nixpkgs {
         inherit system;
       };
@@ -19,6 +18,7 @@
       mkHost =
         {
           hostname,
+          username,
           hardwareConfig,
           hostConfig,
           homeConfig,
@@ -36,7 +36,6 @@
 
               users.users.${username} = {
                 isNormalUser = true;
-                # extraGroups = [ "wheel" "networkmanager" ];
                 shell = pkgs.zsh;
               };
 
@@ -59,6 +58,7 @@
       nixosConfigurations = {
         juxpc = mkHost {
           hostname = "juxpc";
+          username = "jux";
           hardwareConfig = ./nixos/hardware-configuration-juxpc.nix;
           hostConfig = ./nixos/configuration-juxpc.nix;
           homeConfig = ./juxpc.nix;
@@ -66,9 +66,18 @@
 
         juxserver = mkHost {
           hostname = "juxserver";
+          username = "jux";
           hardwareConfig = ./nixos/hardware-configuration-juxserver.nix;
           hostConfig = ./nixos/configuration-juxserver.nix;
           homeConfig = ./juxserver.nix;
+        };
+
+        amaliepc = mkHost {
+          hostname = "amaliepc";
+          username = "amalie"; # change if her Linux username is different
+          hardwareConfig = ./nixos/hardware-configuration-amaliepc.nix;
+          hostConfig = ./nixos/configuration-amaliepc.nix;
+          homeConfig = ./amaliepc.nix;
         };
       };
     };
