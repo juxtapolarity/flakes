@@ -41,6 +41,9 @@
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit username hostname;
+              };
               home-manager.users.${username} = import homeConfig;
 
               nix.settings.experimental-features = [ "nix-command" "flakes" ];
