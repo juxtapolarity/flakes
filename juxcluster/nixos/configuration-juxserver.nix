@@ -15,6 +15,33 @@
   # ---------------------------------------------------------------------------
   services.actual.enable = true;
 
+    # ---------------------------------------------------------------------------
+    # Home Assistant
+    # ---------------------------------------------------------------------------
+    services.home-assistant = {
+      enable = true;
+  
+      config = {
+        homeassistant = {
+          name = "juxserver";
+          unit_system = "metric";
+          time_zone = "Europe/Copenhagen";
+  
+          # helpful when behind Tailscale HTTPS
+          external_url = "https://nixos.tail3aa6f7.ts.net:8443";
+        };
+  
+        default_config = {};
+  
+        http = {
+          use_x_forwarded_for = true;
+          trusted_proxies = [
+            "127.0.0.1"
+            "::1"
+          ];
+        };
+      };
+    };
 
   # ---------------------------------------------------------------------------
   # SSH
@@ -31,7 +58,7 @@
   # Networking
   # ---------------------------------------------------------------------------
   networking.firewall = {
-    allowedTCPPorts = [ 22 ];
+    allowedTCPPorts = [ 22 2183 ];
   };
 
   # ---------------------------------------------------------------------------
