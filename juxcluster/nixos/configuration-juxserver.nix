@@ -46,6 +46,13 @@
   # Enable matter-server
   services.matter-server.enable = true;
 
+  # Enable mDNS (Avahi)
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   # ---------------------------------------------------------------------------
   # SSH
   # ---------------------------------------------------------------------------
