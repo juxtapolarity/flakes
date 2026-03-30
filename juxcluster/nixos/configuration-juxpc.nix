@@ -5,6 +5,9 @@
   # ---------------------------------------------------------------------------
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # Ensure GPU can wake up again, so we don't lose the display connection
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+
   # ---------------------------------------------------------------------------
   # X11 and Desktop setup
   # ---------------------------------------------------------------------------
@@ -15,11 +18,11 @@
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     windowManager.i3.enable = true;
-    displayManager.setupCommands = ''
-      xset s off
-      xset s noblank
-      xset -dpms
-    '';
+    # displayManager.sessionCommands = ''
+    #   xset s off
+    #   xset s noblank
+    #   xset -dpms
+    # '';
   };
 
   # ---------------------------------------------------------------------------
@@ -114,7 +117,7 @@
   # ---------------------------------------------------------------------------
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     nvidiaSettings = true;
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
