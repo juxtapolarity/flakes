@@ -19,12 +19,4 @@
     nodejs
   ];
 
-  # ---------------------------------------------------------------------------
-  # External drives
-  # ---------------------------------------------------------------------------
-  fileSystems."/mnt/media" = {
-    device = "/dev/disk/by-uuid/8f27f9eb-aa9c-40e7-beec-bd9e4610c5ce";
-    fsType = "ext4";
-    options = [ "nofail" ];
-  };
 }
