@@ -48,6 +48,24 @@
   };
 
   # ---------------------------------------------------------------------------
+  # Homepage Dashboard
+  # ---------------------------------------------------------------------------
+  systemd.services.homepage-dashboard = {
+    description = "Homepage Dashboard";
+    wantedBy = [ "multi-user.target" ];
+  
+    serviceConfig = {
+      ExecStart = "${pkgs.homepage-dashboard}/bin/homepage-dashboard";
+      Restart = "always";
+      WorkingDirectory = "/var/lib/homepage";
+  
+      # optional but good practice
+      User = "jux";
+      Group = "users";
+    };
+  };
+
+  # ---------------------------------------------------------------------------
   # Immich
   # ---------------------------------------------------------------------------
   services.immich = {
@@ -156,5 +174,6 @@
     tmux
     neovim
     btop
+    homepage-dashboard
   ];
 }
