@@ -50,19 +50,52 @@
   # ---------------------------------------------------------------------------
   # Homepage Dashboard
   # ---------------------------------------------------------------------------
-  systemd.services.homepage-dashboard = {
-    description = "Homepage Dashboard";
-    wantedBy = [ "multi-user.target" ];
-  
-    serviceConfig = {
-      ExecStart = "${pkgs.homepage-dashboard}/bin/homepage-dashboard";
-      Restart = "always";
-      WorkingDirectory = "/var/lib/homepage";
-  
-      # optional but good practice
-      User = "jux";
-      Group = "users";
+    # ---------------------------------------------------------------------------
+  # Homepage Dashboard
+  # ---------------------------------------------------------------------------
+  services.homepage-dashboard = {
+    enable = true;
+
+    settings = {
+      title = "juxserver";
     };
+
+    services = [
+      {
+        "Hosted Services" = [
+          {
+            "Actual Budget" = {
+              href = "http://127.0.0.1:3000";
+              description = "Budget";
+            };
+          }
+          {
+            "Uptime Kuma" = {
+              href = "http://127.0.0.1:3001";
+              description = "Service monitoring";
+            };
+          }
+          {
+            "Beszel" = {
+              href = "http://127.0.0.1:8090";
+              description = "Server monitoring";
+            };
+          }
+          {
+            "Immich" = {
+              href = "http://127.0.0.1:2283";
+              description = "Photos";
+            };
+          }
+          {
+            "Home Assistant" = {
+              href = "http://127.0.0.1:8123";
+              description = "Smart home";
+            };
+          }
+        ];
+      }
+    ];
   };
 
   # ---------------------------------------------------------------------------
