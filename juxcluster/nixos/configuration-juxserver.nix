@@ -50,46 +50,44 @@
   # ---------------------------------------------------------------------------
   # Homepage Dashboard
   # ---------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------
-  # Homepage Dashboard
-  # ---------------------------------------------------------------------------
   services.homepage-dashboard = {
     enable = true;
-
+    allowedHosts = "localhost:8082,127.0.0.1:8082,juxserver.tail3aa6f7.ts.net:8082";
+  
     settings = {
       title = "juxserver";
     };
-
+  
     services = [
       {
         "Hosted Services" = [
           {
             "Actual Budget" = {
-              href = "http://127.0.0.1:3000";
+              href = "https://juxserver.tail3aa6f7.ts.net:3000";
               description = "Budget";
             };
           }
           {
             "Uptime Kuma" = {
-              href = "http://127.0.0.1:3001";
+              href = "https://juxserver.tail3aa6f7.ts.net:3001";
               description = "Service monitoring";
             };
           }
           {
             "Beszel" = {
-              href = "http://127.0.0.1:8090";
+              href = "https://juxserver.tail3aa6f7.ts.net:8090";
               description = "Server monitoring";
             };
           }
           {
             "Immich" = {
-              href = "http://127.0.0.1:2283";
+              href = "https://juxserver.tail3aa6f7.ts.net";
               description = "Photos";
             };
           }
           {
             "Home Assistant" = {
-              href = "http://127.0.0.1:8123";
+              href = "https://juxserver.tail3aa6f7.ts.net:8443";
               description = "Smart home";
             };
           }
