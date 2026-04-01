@@ -108,6 +108,26 @@
   };
 
   # ---------------------------------------------------------------------------
+  # Ensure Immich media permissions on external drive
+  # ---------------------------------------------------------------------------
+  systemd.services.immich-media-perms = {
+    description = "Fix ownership for Immich media directory";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "mnt-media.mount" ];
+    requires = [ "mnt-media.mount" ];
+    before = [ "immich-server.service" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        ${pkgs.coreutils}/bin/mkdir -p /mnt/media/immich
+        ${pkgs.coreutils}/bin/chown -R immich:immich /mnt/media/immich
+        ${pkgs.coreutils}/bin/chmod 755 /mnt/media/immich
+      '';
+    };
+  };
+
+  # ---------------------------------------------------------------------------
   # Home Assistant
   # ---------------------------------------------------------------------------
   services.home-assistant = {
