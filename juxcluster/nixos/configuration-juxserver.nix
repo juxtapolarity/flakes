@@ -191,6 +191,7 @@
     defaultShared = true;
     listenAddresses = [ "*:631" ];
     allowFrom = [ "192.168.1.0/24" "localhost" ];
+    webInterface = true;
   };
 
   # ---------------------------------------------------------------------------
