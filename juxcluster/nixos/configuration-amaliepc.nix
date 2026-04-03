@@ -25,7 +25,7 @@
   # ---------------------------------------------------------------------------
   # Wifi / bluetooth
   # ---------------------------------------------------------------------------
-  users.users.${username}.extraGroups = [ "wheel" "networkmanager" ];
+  users.users.${username}.extraGroups = [ "wheel" "networkmanager" "lpadmin" ];
   hardware.bluetooth.enable = true;
 
   # ---------------------------------------------------------------------------

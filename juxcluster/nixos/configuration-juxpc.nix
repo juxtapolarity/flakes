@@ -57,7 +57,7 @@
   # ---------------------------------------------------------------------------
   # Wifi / bluetooth
   # ---------------------------------------------------------------------------
-  users.users.jux.extraGroups = [ "wheel" "audio" "networkmanager" ];
+  users.users.jux.extraGroups = [ "wheel" "audio" "networkmanager" "lpadmin" ];
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
