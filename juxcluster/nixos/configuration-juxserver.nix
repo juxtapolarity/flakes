@@ -217,7 +217,7 @@
 
         <txt-record>txtvers=1</txt-record>
         <txt-record>qtotal=1</txt-record>
-        <txt-record>rp=printers/HL-2270DW-series</txt-record>
+        <txt-record>rp=printers/Brother_HL-2270DW_series</txt-record>
         <txt-record>ty=Brother HL-2270DW</txt-record>
         <txt-record>product=(GPL Ghostscript)</txt-record>
         <txt-record>printer-state=3</txt-record>
