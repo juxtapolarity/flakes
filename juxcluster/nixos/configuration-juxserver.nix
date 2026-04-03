@@ -195,6 +195,39 @@
   };
 
   # ---------------------------------------------------------------------------
+  # Avahi / AirPrint advertisement
+  # ---------------------------------------------------------------------------
+  services.avahi = {
+    publish = {
+      enable = true;
+      userServices = true;
+    };
+  };
+
+  environment.etc."avahi/services/airprint.service".text = ''
+    <?xml version="1.0" standalone='no'?>
+    <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+    <service-group>
+      <name replace-wildcards="yes">%h Printer</name>
+
+      <service>
+        <type>_ipp._tcp</type>
+        <subtype>_universal._sub._ipp._tcp</subtype>
+        <port>631</port>
+
+        <txt-record>txtvers=1</txt-record>
+        <txt-record>qtotal=1</txt-record>
+        <txt-record>rp=printers/HL-2270DW-series</txt-record>
+        <txt-record>ty=Brother HL-2270DW</txt-record>
+        <txt-record>product=(GPL Ghostscript)</txt-record>
+        <txt-record>printer-state=3</txt-record>
+        <txt-record>printer-type=0x801046</txt-record>
+        <txt-record>pdl=application/pdf,image/urf</txt-record>
+      </service>
+    </service-group>
+  '';
+
+  # ---------------------------------------------------------------------------
   # Networking
   # ---------------------------------------------------------------------------
   networking.firewall = {
