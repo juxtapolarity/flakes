@@ -138,6 +138,21 @@
   hardware.steam-hardware.enable = true;
 
   # ---------------------------------------------------------------------------
+  # Sunshine (game streaming)
+  # ---------------------------------------------------------------------------
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    openFirewall = true;
+
+    # Leave this OFF on juxpc for now, since you use i3/X11.
+    # capSysAdmin = true;  # Wayland only
+  };
+
+  # Optional but nice for game streaming
+  programs.gamemode.enable = true;
+
+  # ---------------------------------------------------------------------------
   # System packages
   # ---------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [

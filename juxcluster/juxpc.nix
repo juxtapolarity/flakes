@@ -31,6 +31,7 @@ in
     flatpak
     gamescope
     gcc
+    github-copilot-cli
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
@@ -52,6 +53,7 @@ in
     nodejs
     nsxiv
     obsidian
+    opencode
     persepolis
     picom
     polybar
@@ -68,6 +70,7 @@ in
     wezterm
     yabridge
     yabridgectl
+    yazi
     yt-dlp
   ];
 
