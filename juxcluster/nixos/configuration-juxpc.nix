@@ -18,11 +18,13 @@
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
     windowManager.i3.enable = true;
-    # displayManager.sessionCommands = ''
-    #   xset s off
-    #   xset s noblank
-    #   xset -dpms
-    # '';
+
+    # Set DP-4 (PC monitor) as primary, disable HDMI-0 (TV) by default.
+    # The TV can still be enabled at runtime via xrandr.
+    xrandrHeads = [
+      { output = "DP-4"; primary = true; }
+      { output = "HDMI-0"; monitorConfig = ''Option "Enable" "false"''; }
+    ];
   };
 
   # ---------------------------------------------------------------------------
@@ -57,7 +59,7 @@
   # ---------------------------------------------------------------------------
   # Wifi / bluetooth
   # ---------------------------------------------------------------------------
-  users.users.jux.extraGroups = [ "wheel" "audio" "networkmanager" "lpadmin" ];
+  users.users.jux.extraGroups = [ "wheel" "audio" "networkmanager" "lpadmin" "dialout" ];
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 

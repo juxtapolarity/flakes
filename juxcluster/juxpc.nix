@@ -53,7 +53,6 @@ in
     nodejs
     nsxiv
     obsidian
-    opencode
     persepolis
     picom
     polybar
