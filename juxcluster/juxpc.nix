@@ -24,6 +24,7 @@ in
     docker
     dualsensectl
     feh
+    xwinwrap
     ffmpeg
     firefox
     firejail
