@@ -17,6 +17,7 @@ in
     appimage-run
     ardour
     aria2
+    bazecor
     bitwarden-cli
     btop
     carla

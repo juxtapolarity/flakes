@@ -155,6 +155,26 @@
   programs.gamemode.enable = true;
 
   # ---------------------------------------------------------------------------
+  # Dygma keyboard udev rules (for Bazecor)
+  # ---------------------------------------------------------------------------
+  services.udev.extraRules = ''
+    # Dygma Raise
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2200", MODE="0660", TAG+="uaccess"
+    # bootloader mode
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2201", MODE="0660", TAG+="uaccess"
+
+    # Dygma USB Keyboards Vendor ID
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="35ef", MODE="0660", TAG+="uaccess"
+    # bootloader mode
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="35ef", MODE="0660", TAG+="uaccess"
+
+    # Dygma HID Keyboards Vendor ID
+    KERNEL=="hidraw*", ATTRS{idVendor}=="35ef", MODE="0660", TAG+="uaccess"
+    # bootloader mode
+    KERNEL=="hidraw*", ATTRS{idVendor}=="35ef", MODE="0660", TAG+="uaccess"
+  '';
+
+  # ---------------------------------------------------------------------------
   # System packages
   # ---------------------------------------------------------------------------
   environment.systemPackages = with pkgs; [
