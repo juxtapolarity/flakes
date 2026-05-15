@@ -26,6 +26,14 @@ in
     zoxide
   ];
 
+  # ---------------------------------------------------------------------------
+  # Editor
+  # ---------------------------------------------------------------------------
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   home.file = {
     ".zshrc".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/zsh/.zshrc";
